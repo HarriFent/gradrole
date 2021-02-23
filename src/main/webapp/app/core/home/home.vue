@@ -14,7 +14,7 @@
 
         <div class="alert alert-warning" v-if="!authenticated">
           <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
-          <a class="btn btn-primary" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a
+          <a class="btn btn-primary py-0" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">Sign In</a
           ><span v-html="$t('global.messages.info.authenticated.suffix')">
             you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
             password="user").</span
