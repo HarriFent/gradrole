@@ -38,6 +38,8 @@ public class AdminUserDTO {
 
     private boolean activated = false;
 
+    private Instant dob;
+
     @Size(min = 2, max = 10)
     private String langKey;
 
@@ -63,6 +65,7 @@ public class AdminUserDTO {
         this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.activated = user.isActivated();
+        this.dob = user.getDOB();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
         this.createdBy = user.getCreatedBy();
@@ -136,6 +139,14 @@ public class AdminUserDTO {
         this.activated = activated;
     }
 
+    public Instant getDOB() {
+        return dob;
+    }
+
+    public void setDOB(Instant dob) {
+        this.dob = dob;
+    }
+
     public String getLangKey() {
         return langKey;
     }
@@ -195,6 +206,7 @@ public class AdminUserDTO {
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
+            ", dob=" + dob +
             ", langKey='" + langKey + '\'' +
             ", createdBy=" + createdBy +
             ", createdDate=" + createdDate +

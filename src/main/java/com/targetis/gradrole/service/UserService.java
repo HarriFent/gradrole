@@ -134,6 +134,7 @@ public class UserService {
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setMiddleName(userDTO.getMiddleName());
         newUser.setLastName(userDTO.getLastName());
+        newUser.setDOB(userDTO.getDOB());
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -172,6 +173,7 @@ public class UserService {
             user.setEmail(userDTO.getEmail().toLowerCase());
         }
         user.setImageUrl(userDTO.getImageUrl());
+        user.setDOB(userDTO.getDOB());
         if (userDTO.getLangKey() == null) {
             user.setLangKey(Constants.DEFAULT_LANGUAGE); // default language
         } else {
@@ -221,6 +223,7 @@ public class UserService {
                     }
                     user.setImageUrl(userDTO.getImageUrl());
                     user.setActivated(userDTO.isActivated());
+                    user.setDOB(userDTO.getDOB());
                     user.setLangKey(userDTO.getLangKey());
                     Set<Authority> managedAuthorities = user.getAuthorities();
                     managedAuthorities.clear();
@@ -260,7 +263,15 @@ public class UserService {
      * @param langKey   language key.
      * @param imageUrl  image URL of user.
      */
-    public void updateUser(String firstName, String lastName, String middleName, String email, String langKey, String imageUrl) {
+    public void updateUser(
+        String firstName,
+        String lastName,
+        String middleName,
+        String email,
+        Instant dob,
+        String langKey,
+        String imageUrl
+    ) {
         SecurityUtils
             .getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
@@ -272,6 +283,7 @@ public class UserService {
                     if (email != null) {
                         user.setEmail(email.toLowerCase());
                     }
+                    user.setDOB(dob);
                     user.setLangKey(langKey);
                     user.setImageUrl(imageUrl);
                     this.clearUserCaches(user);
