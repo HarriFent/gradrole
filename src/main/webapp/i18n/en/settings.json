@@ -4,6 +4,8 @@
     "form": {
       "firstname": "First Name",
       "firstname.placeholder": "Your first name",
+      "middlename": "Middle Name",
+      "middlename.placeholder": "Your middle name",
       "lastname": "Last Name",
       "lastname.placeholder": "Your last name",
       "language": "Language",

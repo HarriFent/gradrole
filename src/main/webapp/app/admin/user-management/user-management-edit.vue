@@ -59,6 +59,27 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="middleName" v-text="$t('userManagement.middleName')">Middle Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="middleName"
+              name="middleName"
+              v-bind:placeholder="$t('settings.form[\'middlename.placeholder\']')"
+              :class="{ valid: !$v.userAccount.middleName.$invalid, invalid: $v.userAccount.middleName.$invalid }"
+              v-model="$v.userAccount.middleName.$model"
+            />
+            <div v-if="$v.userAccount.middleName.$anyDirty && $v.userAccount.middleName.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.userAccount.middleName.maxLength"
+                v-text="$t('entity.validation.maxlength', { max: 50 })"
+              >
+                This field cannot be longer than 50 characters.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" for="lastName" v-text="$t('userManagement.lastName')">Last Name</label>
             <input
               type="text"
