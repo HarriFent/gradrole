@@ -2,6 +2,7 @@ export interface IUser {
   id?: any;
   login?: string;
   firstName?: string;
+  middleName?: string;
   lastName?: string;
   email?: string;
   activated?: boolean;
@@ -19,6 +20,7 @@ export class User implements IUser {
     public id?: any,
     public login?: string,
     public firstName?: string,
+    public middleName?: string,
     public lastName?: string,
     public email?: string,
     public activated?: boolean,

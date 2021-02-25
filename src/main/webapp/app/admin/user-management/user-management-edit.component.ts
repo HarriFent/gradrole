@@ -20,6 +20,9 @@ const validations: any = {
     firstName: {
       maxLength: maxLength(50),
     },
+    middleName: {
+      maxLength: maxLength(50),
+    },
     lastName: {
       maxLength: maxLength(50),
     },

@@ -53,6 +53,9 @@ class UserResourceIT {
     private static final String DEFAULT_FIRSTNAME = "john";
     private static final String UPDATED_FIRSTNAME = "jhipsterFirstName";
 
+    private static final String DEFAULT_MIDDLENAME = "harry";
+    private static final String UPDATED_MIDDLENAME = "jhipsterMiddleName";
+
     private static final String DEFAULT_LASTNAME = "doe";
     private static final String UPDATED_LASTNAME = "jhipsterLastName";
 
@@ -98,6 +101,7 @@ class UserResourceIT {
         user.setActivated(true);
         user.setEmail(RandomStringUtils.randomAlphabetic(5) + DEFAULT_EMAIL);
         user.setFirstName(DEFAULT_FIRSTNAME);
+        user.setMiddleName(DEFAULT_MIDDLENAME);
         user.setLastName(DEFAULT_LASTNAME);
         user.setImageUrl(DEFAULT_IMAGEURL);
         user.setLangKey(DEFAULT_LANGKEY);
@@ -129,6 +133,7 @@ class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN);
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
+        managedUserVM.setMiddleName(DEFAULT_FIRSTNAME);
         managedUserVM.setLastName(DEFAULT_LASTNAME);
         managedUserVM.setEmail(DEFAULT_EMAIL);
         managedUserVM.setActivated(true);
@@ -152,6 +157,7 @@ class UserResourceIT {
                 User testUser = users.get(users.size() - 1);
                 assertThat(testUser.getLogin()).isEqualTo(DEFAULT_LOGIN);
                 assertThat(testUser.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
+                assertThat(testUser.getMiddleName()).isEqualTo(DEFAULT_MIDDLENAME);
                 assertThat(testUser.getLastName()).isEqualTo(DEFAULT_LASTNAME);
                 assertThat(testUser.getEmail()).isEqualTo(DEFAULT_EMAIL);
                 assertThat(testUser.getImageUrl()).isEqualTo(DEFAULT_IMAGEURL);
@@ -170,6 +176,7 @@ class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN);
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
+        managedUserVM.setMiddleName(DEFAULT_MIDDLENAME);
         managedUserVM.setLastName(DEFAULT_LASTNAME);
         managedUserVM.setEmail(DEFAULT_EMAIL);
         managedUserVM.setActivated(true);
@@ -202,6 +209,7 @@ class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN); // this login should already be used
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
+        managedUserVM.setMiddleName(DEFAULT_MIDDLENAME);
         managedUserVM.setLastName(DEFAULT_LASTNAME);
         managedUserVM.setEmail("anothermail@localhost");
         managedUserVM.setActivated(true);
@@ -234,6 +242,7 @@ class UserResourceIT {
         managedUserVM.setLogin("anotherlogin");
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
+        managedUserVM.setMiddleName(DEFAULT_MIDDLENAME);
         managedUserVM.setLastName(DEFAULT_LASTNAME);
         managedUserVM.setEmail(DEFAULT_EMAIL); // this email should already be used
         managedUserVM.setActivated(true);
@@ -268,6 +277,7 @@ class UserResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].login").value(hasItem(DEFAULT_LOGIN)))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRSTNAME)))
+            .andExpect(jsonPath("$.[*].middleName").value(hasItem(DEFAULT_MIDDLENAME)))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LASTNAME)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGEURL)))
@@ -289,6 +299,7 @@ class UserResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.login").value(user.getLogin()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRSTNAME))
+            .andExpect(jsonPath("$.middleName").value(DEFAULT_MIDDLENAME))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LASTNAME))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGEURL))
@@ -318,6 +329,7 @@ class UserResourceIT {
         managedUserVM.setLogin(updatedUser.getLogin());
         managedUserVM.setPassword(UPDATED_PASSWORD);
         managedUserVM.setFirstName(UPDATED_FIRSTNAME);
+        managedUserVM.setMiddleName(UPDATED_MIDDLENAME);
         managedUserVM.setLastName(UPDATED_LASTNAME);
         managedUserVM.setEmail(UPDATED_EMAIL);
         managedUserVM.setActivated(updatedUser.isActivated());
@@ -344,6 +356,7 @@ class UserResourceIT {
                 assertThat(users).hasSize(databaseSizeBeforeUpdate);
                 User testUser = users.stream().filter(usr -> usr.getId().equals(updatedUser.getId())).findFirst().get();
                 assertThat(testUser.getFirstName()).isEqualTo(UPDATED_FIRSTNAME);
+                assertThat(testUser.getMiddleName()).isEqualTo(UPDATED_MIDDLENAME);
                 assertThat(testUser.getLastName()).isEqualTo(UPDATED_LASTNAME);
                 assertThat(testUser.getEmail()).isEqualTo(UPDATED_EMAIL);
                 assertThat(testUser.getImageUrl()).isEqualTo(UPDATED_IMAGEURL);
@@ -367,6 +380,7 @@ class UserResourceIT {
         managedUserVM.setLogin(UPDATED_LOGIN);
         managedUserVM.setPassword(UPDATED_PASSWORD);
         managedUserVM.setFirstName(UPDATED_FIRSTNAME);
+        managedUserVM.setMiddleName(UPDATED_MIDDLENAME);
         managedUserVM.setLastName(UPDATED_LASTNAME);
         managedUserVM.setEmail(UPDATED_EMAIL);
         managedUserVM.setActivated(updatedUser.isActivated());
@@ -394,6 +408,7 @@ class UserResourceIT {
                 User testUser = users.stream().filter(usr -> usr.getId().equals(updatedUser.getId())).findFirst().get();
                 assertThat(testUser.getLogin()).isEqualTo(UPDATED_LOGIN);
                 assertThat(testUser.getFirstName()).isEqualTo(UPDATED_FIRSTNAME);
+                assertThat(testUser.getMiddleName()).isEqualTo(UPDATED_MIDDLENAME);
                 assertThat(testUser.getLastName()).isEqualTo(UPDATED_LASTNAME);
                 assertThat(testUser.getEmail()).isEqualTo(UPDATED_EMAIL);
                 assertThat(testUser.getImageUrl()).isEqualTo(UPDATED_IMAGEURL);
@@ -414,6 +429,7 @@ class UserResourceIT {
         anotherUser.setActivated(true);
         anotherUser.setEmail("jhipster@localhost");
         anotherUser.setFirstName("java");
+        anotherUser.setMiddleName("middle");
         anotherUser.setLastName("hipster");
         anotherUser.setImageUrl("");
         anotherUser.setLangKey("en");
@@ -427,6 +443,7 @@ class UserResourceIT {
         managedUserVM.setLogin(updatedUser.getLogin());
         managedUserVM.setPassword(updatedUser.getPassword());
         managedUserVM.setFirstName(updatedUser.getFirstName());
+        managedUserVM.setMiddleName(updatedUser.getMiddleName());
         managedUserVM.setLastName(updatedUser.getLastName());
         managedUserVM.setEmail("jhipster@localhost"); // this email should already be used by anotherUser
         managedUserVM.setActivated(updatedUser.isActivated());
@@ -460,6 +477,7 @@ class UserResourceIT {
         anotherUser.setActivated(true);
         anotherUser.setEmail("jhipster@localhost");
         anotherUser.setFirstName("java");
+        anotherUser.setMiddleName("middle");
         anotherUser.setLastName("hipster");
         anotherUser.setImageUrl("");
         anotherUser.setLangKey("en");
@@ -473,6 +491,7 @@ class UserResourceIT {
         managedUserVM.setLogin("jhipster"); // this login should already be used by anotherUser
         managedUserVM.setPassword(updatedUser.getPassword());
         managedUserVM.setFirstName(updatedUser.getFirstName());
+        managedUserVM.setMiddleName(updatedUser.getMiddleName());
         managedUserVM.setLastName(updatedUser.getLastName());
         managedUserVM.setEmail(updatedUser.getEmail());
         managedUserVM.setActivated(updatedUser.isActivated());
@@ -532,6 +551,7 @@ class UserResourceIT {
         userDTO.setId(DEFAULT_ID);
         userDTO.setLogin(DEFAULT_LOGIN);
         userDTO.setFirstName(DEFAULT_FIRSTNAME);
+        userDTO.setMiddleName(DEFAULT_MIDDLENAME);
         userDTO.setLastName(DEFAULT_LASTNAME);
         userDTO.setEmail(DEFAULT_EMAIL);
         userDTO.setActivated(true);
@@ -545,6 +565,7 @@ class UserResourceIT {
         assertThat(user.getId()).isEqualTo(DEFAULT_ID);
         assertThat(user.getLogin()).isEqualTo(DEFAULT_LOGIN);
         assertThat(user.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
+        assertThat(user.getMiddleName()).isEqualTo(DEFAULT_MIDDLENAME);
         assertThat(user.getLastName()).isEqualTo(DEFAULT_LASTNAME);
         assertThat(user.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(user.isActivated()).isTrue();
@@ -575,6 +596,7 @@ class UserResourceIT {
         assertThat(userDTO.getId()).isEqualTo(DEFAULT_ID);
         assertThat(userDTO.getLogin()).isEqualTo(DEFAULT_LOGIN);
         assertThat(userDTO.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
+        assertThat(userDTO.getMiddleName()).isEqualTo(DEFAULT_MIDDLENAME);
         assertThat(userDTO.getLastName()).isEqualTo(DEFAULT_LASTNAME);
         assertThat(userDTO.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(userDTO.isActivated()).isTrue();

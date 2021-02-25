@@ -17,6 +17,7 @@
     },
     "login": "Login",
     "firstName": "Prénom",
+    "middleName": "deuxième nom",
     "lastName": "Nom",
     "email": "Email",
     "activated": "Activé",

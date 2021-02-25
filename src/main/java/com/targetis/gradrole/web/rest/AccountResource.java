@@ -140,6 +140,7 @@ public class AccountResource {
         }
         userService.updateUser(
             userDTO.getFirstName(),
+            userDTO.getMiddleName(),
             userDTO.getLastName(),
             userDTO.getEmail(),
             userDTO.getLangKey(),

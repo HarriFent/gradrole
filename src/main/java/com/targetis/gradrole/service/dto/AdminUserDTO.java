@@ -24,6 +24,9 @@ public class AdminUserDTO {
     private String firstName;
 
     @Size(max = 50)
+    private String middleName;
+
+    @Size(max = 50)
     private String lastName;
 
     @Email
@@ -56,6 +59,7 @@ public class AdminUserDTO {
         this.id = user.getId();
         this.login = user.getLogin();
         this.firstName = user.getFirstName();
+        this.middleName = user.getMiddleName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.activated = user.isActivated();
@@ -90,6 +94,14 @@ public class AdminUserDTO {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     public String getLastName() {
@@ -178,6 +190,7 @@ public class AdminUserDTO {
         return "AdminUserDTO{" +
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
+            ", middleName='" + middleName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
