@@ -23,6 +23,11 @@
           "minlength": "Your first name is required to be at least 1 character",
           "maxlength": "Your first name cannot be longer than 50 characters"
         },
+        "middleName": {
+          "required": "Your middle name is required.",
+          "minlength": "Your middle name is required to be at least 1 character",
+          "maxlength": "Your middle name cannot be longer than 50 characters"
+        },
         "lastname": {
           "required": "Your last name is required.",
           "minlength": "Your last name is required to be at least 1 character",
