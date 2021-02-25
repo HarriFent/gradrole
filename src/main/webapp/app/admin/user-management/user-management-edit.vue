@@ -154,6 +154,28 @@
             </label>
           </div>
 
+          <div class="formDate form-group">
+            <label for="dob" v-text="$t('userManagement.dob')">Date of birth</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dob"
+              name="dob"
+              v-bind:placeholder="$t('settings.form[\'dob.placeholder\']')"
+              :class="{ valid: !$v.userAccount.dob.$invalid, invalid: $v.userAccount.dob.$invalid }"
+              v-model="$v.userAccount.dob.$model"
+            />
+            <!--              <div v-if="$v.userAccount.dob.$anyDirty && $v.userAccount.dob.$invalid">
+                  <small
+                      class="form-text text-danger"
+                      v-if="!$v.userAccount.dob.required"
+                      v-text="$t('entity.validation.required')"
+                  >
+                      Your date of birth is required.
+                  </small>
+              </div>-->
+          </div>
+
           <div class="form-group" v-if="languages && Object.keys(languages).length > 0">
             <label for="langKey" v-text="$t('userManagement.langKey')">Language</label>
             <select class="form-control" id="langKey" name="langKey" v-model="userAccount.langKey">

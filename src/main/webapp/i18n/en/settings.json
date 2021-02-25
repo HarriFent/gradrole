@@ -32,6 +32,10 @@
           "required": "Your last name is required.",
           "minlength": "Your last name is required to be at least 1 character",
           "maxlength": "Your last name cannot be longer than 50 characters"
+        },
+        "dob": {
+          "required": "Your date of birth is required.",
+          "minValue": "Your date of birth must be in the past."
         }
       }
     }
