@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedDate;
 
 /**
  * A user.
@@ -64,6 +65,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;
+
+    @CreatedDate
+    @Column(name = "dob")
+    @JsonIgnore
+    private Instant dob = Instant.now();
 
     @Size(min = 2, max = 10)
     @Column(name = "lang_key", length = 10)
@@ -175,6 +181,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.activated = activated;
     }
 
+    public Instant getDOB() {
+        return dob;
+    }
+
+    public void setDOB(Instant dob) {
+        this.dob = dob;
+    }
+
     public String getActivationKey() {
         return activationKey;
     }
@@ -248,6 +262,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", firstName='" + firstName + '\'' +
             ", middleName='" + middleName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", dob='" + dob.toString() + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +
